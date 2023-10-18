@@ -166,6 +166,15 @@ const __styles = (isDark: boolean) =>
       paddingTop: 12,
       paddingBottom: 12,
       backgroundColor: Color.get('card', isDark),
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 7,
+      },
+      shadowOpacity: 0.41,
+      shadowRadius: 9.11,
+
+      elevation: 14,
       ...Platform.select({
         ios: {
           borderRadius: 12,
