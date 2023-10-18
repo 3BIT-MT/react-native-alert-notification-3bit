@@ -10,5 +10,13 @@ export const getImage = (type: IConfigDialog['type']): ImageRequireSource => {
       return require('../assets/warning.png');
     case ALERT_TYPE.DANGER:
       return require('../assets/danger.png');
+    case ALERT_TYPE.ERROR:
+      return require('../assets/danger.png');
+    case ALERT_TYPE.MARKER:
+      return require('../assets/marker.png');
+    case ALERT_TYPE.PROMO_SUCCESS:
+      return require('../assets/promo_success.png');
+    case ALERT_TYPE.PROMO_ERROR:
+      return require('../assets/promo_error.png');
   }
 };

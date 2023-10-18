@@ -120,10 +120,10 @@ export class ToastRender extends React.Component<IProps, IState> {
     //   return model({ isDark, type, title, description });
     // }
     return (
-      <View style={styles.cardContainer}>
+      <View style={[styles.cardContainer, styles[`${type}`]]}>
         {type && (
           <React.Fragment>
-            <View style={styles.backendImage} />
+            {/* <View style={styles.backendImage} /> */}
             <Image source={getImage(type)} resizeMode="contain" style={StyleSheet.flatten([styles.image, styles[`${type}Image`]])} />
           </React.Fragment>
         )}
@@ -158,23 +158,33 @@ const __styles = (isDark: boolean) =>
       position: 'absolute',
       left: 0,
       right: 0,
+      ...Platform.select({
+        android: {
+          marginTop: 12,
+        },
+      }),
     },
 
     cardContainer: {
       flexDirection: 'row',
-      paddingHorizontal: 12,
+      paddingHorizontal: 24,
       paddingTop: 12,
       paddingBottom: 12,
       backgroundColor: Color.get('card', isDark),
-      shadowColor: "#000",
+
+      shadowColor: '#000',
       shadowOffset: {
         width: 0,
-        height: 7,
+        height: 1,
       },
-      shadowOpacity: 0.41,
-      shadowRadius: 9.11,
+      shadowOpacity: 0.22,
+      shadowRadius: 2.22,
 
-      elevation: 14,
+      elevation: 3,
+
+      borderWidth: 1,
+      borderColor: '#737373',
+
       ...Platform.select({
         ios: {
           borderRadius: 12,
@@ -188,9 +198,34 @@ const __styles = (isDark: boolean) =>
       }),
     },
 
+    [`${ALERT_TYPE.ERROR}`]: {
+      backgroundColor: '#FFE5E4',
+      borderWidth: 1,
+      borderColor: '#D72221',
+    },
+
+    [`${ALERT_TYPE.PROMO_SUCCESS}`]: {
+      backgroundColor: '#DCFFE4',
+      borderWidth: 1,
+      borderColor: '#48CB65',
+    },
+
+    [`${ALERT_TYPE.PROMO_ERROR}`]: {
+      backgroundColor: '#FFE5E4',
+      borderWidth: 1,
+      borderColor: '#D72221',
+    },
+
+    [`${ALERT_TYPE.MARKER}`]: {
+      backgroundColor: '#FFE5E4',
+      borderWidth: 1,
+      borderColor: '#D72221',
+    },
+
     labelContainer: {
       overflow: 'hidden',
       flex: 1,
+      justifyContent: 'center',
     },
 
     titleLabel: {
@@ -212,9 +247,10 @@ const __styles = (isDark: boolean) =>
     },
     image: {
       alignSelf: 'center',
-      width: 25,
+      width: 26,
       aspectRatio: 1,
-      marginRight: 12,
+      marginRight: 20,
+      marginBottom: 5,
     },
 
     [`${ALERT_TYPE.SUCCESS}Image`]: {
