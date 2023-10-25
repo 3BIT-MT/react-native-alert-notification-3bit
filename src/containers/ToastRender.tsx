@@ -222,6 +222,12 @@ const __styles = (isDark: boolean) =>
       borderColor: '#D72221',
     },
 
+    [`${ALERT_TYPE.UPDATE}`]: {
+      backgroundColor: '#F6DF67',
+      borderWidth: 1,
+      borderColor: '#FFFFFF',
+    },
+
     labelContainer: {
       overflow: 'hidden',
       flex: 1,
