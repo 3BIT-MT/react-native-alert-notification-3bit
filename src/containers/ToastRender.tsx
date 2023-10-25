@@ -268,4 +268,8 @@ const __styles = (isDark: boolean) =>
     [`${ALERT_TYPE.WARNING}Image`]: {
       tintColor: Color.get('warning', isDark),
     },
+    [`${ALERT_TYPE.UPDATE}Image`]: {
+      tintColor: 'white',
+      width: 32,
+    },
   });
